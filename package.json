@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/hberry79/Flashcard-Generator/issues"
   },
-  "homepage": "https://github.com/hberry79/Flashcard-Generator#readme"
+  "homepage": "https://github.com/hberry79/Flashcard-Generator#readme",
+  "dependencies": {
+    "inquirer": "^3.0.6"
+  }
 }
