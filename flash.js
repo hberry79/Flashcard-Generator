@@ -61,3 +61,11 @@ inquirer.prompt([{
         ]).then(function(CardInfoCloze) {});//end of close card info grab
     }
 }); //end of inquirer.prompt
+
+function getCards (){
+  fs.readFile(cardFile, "utf8",function (error, data){
+    console.log(data);
+  });
+
+getCards();
+}
