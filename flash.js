@@ -1,34 +1,63 @@
-function BasiCard(front, back){
+//==============================
+//dependencies
+//==============================
+var inquirer = require("inquirer");
+var fs = require("fs");
+var cardFile = ("./cards.json")
+
+//==============================
+//code to run and construct the cards
+//==============================
+
+function ClozeCard(text, cloze){
+  this.text = text;
+  this.cloze= cloze;
+}//end of clozeCard constructor
+
+
+function BasicCard(front, back){
   this.front = front;
   this.back = back;
 }//end of basicCard constructor
 
-function ClozeCard(text, cloze){
-  
-  if(this instanceof ClozeCard){
-    this.text = text;//returns partial text
-    this.cloze = cloze;//returns full text
-  }
-  else {
-    return new ClozeCard(text, cloze);
-  }
-}//end of clozeCard constructor
+//==============================
+//code to ask user for input to make cards
+//==============================
 
+//first figure out if they are making a cloze or regular
+inquirer.prompt([{
+        type: "list",
+        name: "cardType",
+        message: "What tpe of card are you making??",
+        choices: ["Basic Card", "ClozeCard"]
+    }
+]).then(function(cardInputSetup) {
+    if (cardInputSetup.cardType === "Basic Card") {
+        return inquirer.prompt([
+        {
+            type: "input",
+            name: "front",
+            message: "What do you want the front of the card to say? (full question)"
+        },
+        {
+            type: "input",
+            name: "back",
+            message: "What do you want the back of the card to say? (answer)"
+        }
+        ]).then(function(CardInfoBasic) {
+          console.log(CardInfoBasic);
+          //add to constructor
+          var card = new BasicCard(cardInputSetup.front, cardInputSetup.back);
 
-var firstCard = new Basicard('Who was the first president of the United States', 'George Washington');
-var secondCard = new Basicard('Who is the cutest cat in the world?', 'Monroe!');
-
-
-ClozeCard.prototype.partial = function(){
- 
-  if(this.text.includes(this.cloze)){
-     return this.text.replace(this.cloze, '...');
-  }
-  else{
-    return "Sorry this does not exits!";
-  }
-}
-
-
-var firstCloze = ClozeCard('George Washington is the first president of the United States', 'George Washington');
-var secondCloze = ClozeCard('George Washington is the first president of the United States', 'George Washington');
+          fs.appendFile(cardFile, card, function(err) {
+            if (err) {
+              console.log(err);
+              }
+          });//end of fs.appendFile
+        }); //end of basic card info grab
+    } else {
+        return inquirer.prompt([
+          //ask for close card info
+        ]).then(function(CardInfoCloze) {});//end of close card info grab
+    }
+}); //end of inquirer.prompt
