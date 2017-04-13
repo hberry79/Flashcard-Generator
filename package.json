@@ -1,0 +1,19 @@
+{
+  "name": "flashcardgenerator",
+  "version": "1.0.0",
+  "description": "creates two kinds of flash cards to held  user study",
+  "main": "flash.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hberry79/Flashcard-Generator.git"
+  },
+  "author": "Heather",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hberry79/Flashcard-Generator/issues"
+  },
+  "homepage": "https://github.com/hberry79/Flashcard-Generator#readme"
+}
