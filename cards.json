@@ -1,7 +1,1 @@
-function BasicCard(front, back){
-  this.front = front;
-  this.back = back;
-}function BasicCard(front, back){
-  this.front = front;
-  this.back = back;
-}[object Object]
+{"front":"who i smy best friend","back":"danny kim"}{"front":"What is your favorite color?","back":"blue"}{"text":"Pluto is the smallest planet","cloze":"pluto","study":"_____ is the smallest planet"}{"text":"dgfgfd","cloze":"dgfgdf","study":"gjhfldf"}
