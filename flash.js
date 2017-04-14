@@ -66,7 +66,7 @@ function makeBasicCard(){
           card = new BasicCard(cardInfoBasic.front, cardInfoBasic.back);
             console.log(card);
 
-          fs.appendFile(cardFile, JSON.stringify(card), function(err) {
+          fs.appendFile(cardFile, JSON.stringify(card)+ '\r\n', function(err) {
             if (err) {
               console.log(err);
               }
@@ -99,7 +99,7 @@ function makeClozeCard(){
           clozeCardMade = new ClozeCard(cardInfoCloze.text, cardInfoCloze.cloze, cardInfoCloze.study);
             console.log(clozeCardMade);
 
-          fs.appendFile(cardFile, JSON.stringify(clozeCardMade) + "\n", function(err) {
+          fs.appendFile(cardFile, JSON.stringify(clozeCardMade)+ '\r\n' , function(err) {
             if (err) {
               console.log(err);
               }
@@ -117,4 +117,15 @@ function getCards (){
     }
     console.log(data);
   });
+}
+//I could pass each object line by line to see if it is cloze or basic
+function checkCardType(myObj){
+  //example line passed in
+  myObj = {"text":"bdfd","cloze":"dffdb","study":"vff"}
+  if ("cloze" in myObj) {
+    //then it is a cloze card
+    console.log("it is a cloze")
+  } else {
+    //then it is a basic card
+  }
 }
